@@ -1,31 +1,28 @@
 import utils.file_reading as fr
+from pathlib import Path
 from entities.candidate import Candidate
 
 TOTAL_VOTES = 2000
 
 
 def task_1():
+    if Path.exists("candidates.csv") | | Path.exists("candidates.csv"):
+        print("Found existing data files. Would you like to read data from them?")
     pass
 
 
-def get_winners() -> list[Candidate]:
+def get_winner(data: dict[str, Candidate]) -> Candidate:
     """
-    Function returns list of candidates that have more than one third of all votes
-    (2000)
+    Function returns candidate that wone more than one third of all votes
+    (2000) or None if multiple/none won
     """
-    file_type = input("Select file type (csv, pkl)")
-    candidates: dict[Candidate, int] = {}
     res: list[Candidate] = []
-    match file_type:
-        case "csv":
-            candidates = fr.read_csv()
-        case "pkl":
-            candidates = fr.read_csv()
-        case _:
-            raise RuntimeError("Wrong file type")
 
-    for candidate, votes in candidates.items():
-        if votes > TOTAL_VOTES/3:
+    for _, candidate in data.items():
+        if candidate.vote_count > TOTAL_VOTES/3:
             res.append(candidate)
 
-    return res
+    if len(res) == 1:
+        return res[0]
+
+    return None

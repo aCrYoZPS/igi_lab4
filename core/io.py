@@ -1,0 +1,62 @@
+ACTION_QUIT = 0
+ACTION_YES = 1
+ACTION_NO = 2
+
+actions_dict = {"q": ACTION_QUIT, "y": ACTION_YES, "n": ACTION_NO}
+
+
+class IOCommand:
+    def __init__(self, action: str):
+        self.action = actions_dict.get(action)
+
+
+def y_n_question(prompt: str) -> IOCommand:
+    inpt = ""
+    while True:
+        inpt = input(f"{prompt} [Y] - Yes, [N] - No, [Q] - Quit")
+        inpt = inpt.lower()
+
+        if inpt == "y":
+            return True
+
+        if inpt == "y":
+            return True
+
+
+def print_collection_table(collection, col1_name: str = "Key", col2_name: str = "Value"):
+    """
+    Prints a table representing a collection.
+
+    Args:
+        collection: The collection to display (dict, list, set, etc.)
+        col1_name: Header for first column (default "Key")
+        col2_name: Header for second column (default "Value")
+    """
+
+    max_key_len = len(col1_name)
+    max_val_len = len(col2_name)
+
+    items = []
+    if isinstance(collection, dict):
+        items = collection.items()
+    elif isinstance(collection, (list, tuple, set)):
+        items = [(i, item) for i, item in enumerate(collection)]
+    else:
+        raise ValueError("Unsupported collection type")
+
+    for key, value in items:
+        max_key_len = max(max_key_len, len(str(key)))
+        max_val_len = max(max_val_len, len(str(value)))
+
+    header = f"| {col1_name.ljust(max_key_len)} | {col2_name.ljust(max_val_len)} |"
+    separator = "+-" + "-" * max_key_len + "-+-" + "-" * max_val_len + "-+"
+
+    print(separator)
+    print(header)
+    print(separator)
+
+    for key, value in items:
+        row = f"| {str(key).ljust(max_key_len)} | {str(value).ljust(max_val_len)} |"
+        print(row)
+
+    print(separator)
