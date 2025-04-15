@@ -1,29 +1,25 @@
-ACTION_QUIT = 0
-ACTION_YES = 1
-ACTION_NO = 2
+from core.globals import ACTION_NO, ACTION_QUIT, ACTION_YES
 
-actions_dict = {"q": ACTION_QUIT, "y": ACTION_YES, "n": ACTION_NO}
+actions_dict: dict[str, int] = {"q": ACTION_QUIT, "y": ACTION_YES,
+                                "n": ACTION_NO}
 
 
 class IOCommand:
-    def __init__(self, action: str):
+    def __init__(self, action: int):
         self.action = actions_dict.get(action)
 
 
 def y_n_question(prompt: str) -> IOCommand:
     inpt = ""
     while True:
-        inpt = input(f"{prompt} [Y] - Yes, [N] - No, [Q] - Quit")
+        inpt = input(f"{prompt} [Y] - Yes, [N] - No, [Q] - Quit\n")
         inpt = inpt.lower()
-
-        if inpt == "y":
-            return True
-
-        if inpt == "y":
-            return True
+        if (inpt in "ynq"):
+            return IOCommand(inpt)
 
 
-def print_collection_table(collection, col1_name: str = "Key", col2_name: str = "Value"):
+def print_collection_table(collection, col1_name: str = "Key",
+                           col2_name: str = "Value"):
     """
     Prints a table representing a collection.
 

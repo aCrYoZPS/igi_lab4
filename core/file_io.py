@@ -3,6 +3,11 @@ import pickle
 from entities.candidate import Candidate
 
 
+def read_txt() -> str:
+    with open("text.txt", "rb") as file:
+        return file.read().decode("utf-8")
+
+
 def read_csv() -> dict[str, Candidate]:
     res = {}
     with open("candidates.csv") as csv_file:

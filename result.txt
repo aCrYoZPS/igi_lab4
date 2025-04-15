@@ -1,0 +1,24 @@
+Total sentences: 5
+Dot sentences: 2
+Excl sentences: 1
+Quest sentences: 2
+Mean sentence len: 3.6666666666666665
+Mean word len: 3.6666666666666665
+Number of smileys: 3
+Phones starting with 29:
+
+Analyzed string: abc, da c, dapp a, afad
+Words with second vowel and third consonant:
+da c
+dapp
+Whitespace bound words: 6
+Letter counts:
+a: 6
+b: 1
+c: 2
+d: 3
+f: 1
+p: 2
+Sorted word combinations:
+da c
+dapp a
