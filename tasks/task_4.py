@@ -3,6 +3,7 @@ import re
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+from core.io import input_float
 
 
 color_regex = r"^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
@@ -90,8 +91,6 @@ class Parallelogram(Figure):
         plt.title(f"Parallelogram\nDiagonals: {self.d1}, {self.d2};" +
                   f" Angle: {np.degrees(self.angle):.2f}°")
 
-        ax.plot(0, 0, 'ro')
-
         plt.show()
 
     def __str__(self):
@@ -105,5 +104,19 @@ class Parallelogram(Figure):
 
 
 def task_4():
-    par = Parallelogram(4, 5, 30, "#f5a7e1")
+    print("Input first diagonal:")
+    d1 = input_float()
+    print("Input second diagonal:")
+    d2 = input_float()
+
+    print("Input angle (in degrees):")
+    angle = input_float()
+
+    color = input("Input hex color:\n")
+
+    if angle > 90:
+        print("Invalid angle")
+        return
+
+    par = Parallelogram(d1, d2, angle, color)
     par.draw()

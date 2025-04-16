@@ -76,5 +76,6 @@ def task_2():
 
     zip_file = zipfile.ZipFile("archive.zip", "w")
     zip_file.write("result.txt")
+    print(result)
     print(zip_file.infolist())
     zip_file.close()

@@ -7,18 +7,21 @@ Mean word len: 3.6666666666666665
 Number of smileys: 3
 Phones starting with 29:
 
-Analyzed string: abc, da c, dapp a, afad
+Analyzed string: abc d, zxc sf, aaa bb, pad
 Words with second vowel and third consonant:
-da c
-dapp
-Whitespace bound words: 6
+pad
+Whitespace bound words: 7
 Letter counts:
-a: 6
-b: 1
+a: 5
+b: 3
 c: 2
-d: 3
+d: 2
 f: 1
-p: 2
+p: 1
+s: 1
+x: 1
+z: 1
 Sorted word combinations:
-da c
-dapp a
+aaa bb
+abc d
+zxc sf
